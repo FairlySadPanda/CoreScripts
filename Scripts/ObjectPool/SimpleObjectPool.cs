@@ -118,5 +118,10 @@ namespace FairlySadProductions.Scripts.ObjectPool
         {
             return ourObject;
         }
+
+        public GameObject[] GetPooledObjects()
+        {
+            return pool.Pool;
+        }
     }
 }

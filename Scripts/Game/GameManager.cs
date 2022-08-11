@@ -2,8 +2,8 @@
 
 namespace FairlySadProductions.CoreScripts.Scripts.Game
 {
-    public abstract class ActivityManager : NetworkedUdonSharpBehaviour
+    public abstract class GameManager : NetworkedUdonSharpBehaviour
     {
-        public abstract void TryStartActivityWith(int[] players);
+        public abstract void TryStartGameWith(int[] players);
     }
 }

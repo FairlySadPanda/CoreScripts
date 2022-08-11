@@ -366,7 +366,7 @@ MonoBehaviour:
       Data: 22|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: FairlySadProductions.CoreScripts.Scripts.Game.ActivityManager, FairlySadProductions.CoreScripts
+      Data: FairlySadProductions.CoreScripts.Scripts.Game.GameManager, FairlySadProductions.CoreScripts
     - Name: 
       Entry: 8
       Data: 

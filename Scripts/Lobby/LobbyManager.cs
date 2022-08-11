@@ -12,7 +12,7 @@ namespace FairlySadProductions.CoreScripts.Scripts.Lobby
     public abstract class LobbyManager : NetworkedUdonSharpBehaviour
     {
         [SerializeField] private int maxLobbySize;
-        [SerializeField] private ActivityManager manager;
+        [SerializeField] private GameManager manager;
         [UdonSynced] protected int[] players;
 
         public void Start()
@@ -66,7 +66,7 @@ namespace FairlySadProductions.CoreScripts.Scripts.Lobby
             }
         }
 
-        public virtual void TryToStartActivity()
+        public virtual void TryToStart()
         {
             if (!Networking.IsOwner(gameObject))
             {
@@ -74,12 +74,19 @@ namespace FairlySadProductions.CoreScripts.Scripts.Lobby
             }
 
             Debug.Log($"Trying to start game with {players.Length}");
-            manager.TryStartActivityWith(players);
+            manager.TryStartGameWith(players);
         }
 
         public void _Reset()
         {
+            if (!Networking.IsOwner(gameObject))
+            {
+                return;
+            }
+            
             players = new int[maxLobbySize];
+            
+            RequestSerialization();
         }
 
         protected sealed override void OnNetworkUpdate()

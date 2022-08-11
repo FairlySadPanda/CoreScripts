@@ -5,14 +5,6 @@ namespace FairlySadProductions.CoreScripts.Scripts.Lobby
 {
     public class SimpleLobbyManager : LobbyManager
     {
-        protected override void OnSendNetworkingUpdate()
-        {
-        }
-
-        protected override void OnSentNetworkingUpdate()
-        {
-        }
-
         protected override void UpdatePlayersView()
         {
             foreach (var player in players)
@@ -27,7 +19,7 @@ namespace FairlySadProductions.CoreScripts.Scripts.Lobby
             }
         }
 
-        public override void TryToStartActivity()
+        public override void TryToStart()
         {
             if (!Networking.IsOwner(gameObject))
             {
@@ -43,7 +35,7 @@ namespace FairlySadProductions.CoreScripts.Scripts.Lobby
                 players[i] = playerApis[i].playerId;
             }
             
-            base.TryToStartActivity();
+            base.TryToStart();
             
             RequestSerialization();
         }

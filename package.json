@@ -5,7 +5,7 @@
     "unity" : "2019.4",
     "description" : "Scripts to help you with your UdonSharp projects. Make more Udon, more faster!",
     "vpmDependencies" : {
-      "com.vrchat.udonsharp" :  "1.1.x"
+      "com.vrchat.udonsharp" :  ">=1.1.0"
     },
     "url" : "https://github.com/FairlySadPanda/CoreScripts/archive/refs/heads/master.zip"
 }

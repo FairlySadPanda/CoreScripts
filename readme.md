@@ -103,6 +103,7 @@ With this pool, common networking problems, like "how do I tell the owner of an 
 
 ### LobbyManager
 *Game lobbies without weird bugs! A miracle of science!*
+
 LobbyManager stops you having to write endless boilerplate lobby management code when you just want a collection of signed-up players who want to do something together.
 
 The abstract `LobbyManager` behaviour, and the implementing `SimpleLobbyManager` behaviour, provide a set of simple tools that cover most basic lobby needs.

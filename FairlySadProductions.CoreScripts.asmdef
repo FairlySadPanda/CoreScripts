@@ -1,5 +1,5 @@
 {
-    "name": "NewAssembly",
+    "name": "FairlySadProductions.CoreScripts",
     "references": [
         "VRC.Udon",
         "VRC.SDK3",

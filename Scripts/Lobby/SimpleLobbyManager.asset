@@ -21,7 +21,7 @@ MonoBehaviour:
   compiledVersion: 2
   behaviourSyncMode: 4
   hasInteractEvent: 0
-  scriptID: 6882288230133672899
+  scriptID: -9203877475072636511
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -366,7 +366,7 @@ MonoBehaviour:
       Data: 22|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: FairlySadProductions.Scripts.Game.ActivityManager, Assembly-CSharp
+      Data: FairlySadProductions.CoreScripts.Scripts.Game.ActivityManager, FairlySadProductions.CoreScripts
     - Name: 
       Entry: 8
       Data: 

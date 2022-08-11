@@ -116,7 +116,7 @@ MonoBehaviour:
       Data: 6|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: FairlySadProductions.Scripts.ObjectPool.SimplePooledObject, Assembly-CSharp
+      Data: FairlySadProductions.Scripts.ObjectPool.SimplePooledObject, FairlySadProductions.CoreScripts
     - Name: 
       Entry: 8
       Data: 

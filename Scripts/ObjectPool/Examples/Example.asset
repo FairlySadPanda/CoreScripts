@@ -306,7 +306,7 @@ MonoBehaviour:
       Data: 18|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: FairlySadProductions.Scripts.ObjectPool.SimpleObjectPool, Assembly-CSharp
+      Data: FairlySadProductions.Scripts.ObjectPool.SimpleObjectPool, FairlySadProductions.CoreScripts
     - Name: 
       Entry: 8
       Data: 
@@ -486,7 +486,7 @@ MonoBehaviour:
       Data: 30|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: FairlySadProductions.Scripts.ObjectPool.SimplePoolExampleManager, Assembly-CSharp
+      Data: FairlySadProductions.Scripts.ObjectPool.SimplePoolExampleManager, FairlySadProductions.CoreScripts
     - Name: 
       Entry: 8
       Data: 

@@ -120,6 +120,7 @@ Note that editing the lobby and starting the game requires the client to own the
 
 ### Timer
 *Wait, what*
+
 Timers in Udon are generally annoying to write, as `SendCustomEventDelayedSeconds()` cannot be cancelled after firing, and operate invisibly in the background.
 Thanks to recent defect fixes in Udon, `Instantiate()` works much more reliably to instantiate clones of objects with working `UdonBehaviour` components on them.
 Leveraging this, we can spawn GameObjects that act like timers.

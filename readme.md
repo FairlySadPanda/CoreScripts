@@ -87,3 +87,45 @@ public class SPOExample : SimplePooledObject
  }
 }
 ```
+
+All of the pool logic is handled in the `SimplePooledObject` and `SimpleObjectPool` behaviours. By extending `SimplePooledObject`, you only have to worry about implementing two methods:
+1. `ClearSyncedData`, which should reset all `[UdonSynced]` properties to their default values.
+2. `HandleNewSyncedData` which does whatever you like when you retrieve new synced data.
+
+You can customize the data that is synchronized in your implementation as you see fit: the pool handles ownership management and allocation in the background.
+
+To interact with pooled objects, you can retrieve the pool's object array directly, via `SimpleObjectPool::GetPooledObjects()`, or retrieve the pooled object allocated to your own client via `SimpleObjectPool::GetPooledObject()`. In the latter case, you can then cast the received `SimplePooledObject` to your implementation (e.g. `var obj = (SimplePooledObjectExample)pool.GetPooledObject();`).
+
+There's no magic in the background, just leverage of VRChat's `VRCObjectPool` script and `NetworkedUdonSharpBehaviour` to provide further guarantees of correctness.
+
+With this pool, common networking problems, like "how do I tell the owner of an UdonBehaviour that I would like to do something" and "how do I sync data to all players without causing strange behaviour if lots of people are changing ownership" are solved!
+
+
+### LobbyManager
+*Game lobbies without weird bugs! A miracle of science!*
+LobbyManager stops you having to write endless boilerplate lobby management code when you just want a collection of signed-up players who want to do something together.
+
+The abstract `LobbyManager` behaviour, and the implementing `SimpleLobbyManager` behaviour, provide a set of simple tools that cover most basic lobby needs.
+
+1. `AddPlayer(int playerID)` adds a player to the lobby.
+2. `RemovePlayer(int playerID)` removes a player from the lobby.
+3. `TryToStart()` attempts to start the game.
+4. `_Reset()` resets the lobby to default, clearing out all signed-up players.
+5. `UpdatePlayersView()` is called whenever the list of signed-up players changes, allowing the client to handle displaying the list of players (a "view" of the players signed up,  to use jargon) to the user.
+
+If a player leaves the instance whilst signed up, they will automatically be removed from the lobby.
+
+Note that editing the lobby and starting the game requires the client to own the object. It's intended you use `LobbyManager` with a networked object pool like `SimpleObjectPool` to handle players wanting to sign up, start the game, and so on.#
+
+### Timer
+*Wait, what*
+Timers in Udon are generally annoying to write, as `SendCustomEventDelayedSeconds()` cannot be cancelled after firing, and operate invisibly in the background.
+Thanks to recent defect fixes in Udon, `Instantiate()` works much more reliably to instantiate clones of objects with working `UdonBehaviour` components on them.
+Leveraging this, we can spawn GameObjects that act like timers.
+
+To use this behaviour:
+1. Have an empty GameObject in your scene heirarchy, and add the Timer script to it. This will act as your template: `Instantiate()` needs to clone an object in the scene view for Udon on that object to be recreated.
+2. Spawn new instances of the Timer GameObject when you want to start a timer, and then call `Timer::StartTimer(float, UdonBehaviour, string)` to start the timer. 
+3. If you want to trigger the timer early, call `Timer::EndTimer()`
+4. If you want to cancel the timer, `Destroy()` the GameObject.
+

@@ -131,3 +131,16 @@ To use this behaviour:
 3. If you want to trigger the timer early, call `Timer::EndTimer()`
 4. If you want to cancel the timer, `Destroy()` the GameObject.
 
+### ActivateOnInteract
+*Because nobody should have to write a button script for the 100th time*
+
+With help from Vowgan, `ActivateOnInteract` is the brainlessly simple interact button script you've known you've needed! Thanks to the magic of editor scripting, the behaviour automatically reads the available Udon events exposed inside the behaviour added to the component's UdonBehaviour slot, making it easy to use with all major Udon varieties. In addition, activating the button can be networked between players (using SendCustomNetworkEvent) and optionally only networked to the owner of the object: perfect for simple scripting needs.
+
+To use `ActivateOnInteract`:
+
+1. Add the `ActivateOnInteract` component to an object with a collider on it.
+2. Drag-and-drop the behaviour you want to activate an event on into the 'Behaviour' slot.
+3. Select the event you want to fire from the drop down (the event might have underscores in front of it - that's normal)
+4. Choose your networking options.
+5. You're done!
+

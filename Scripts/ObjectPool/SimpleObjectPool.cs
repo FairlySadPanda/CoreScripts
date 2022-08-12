@@ -97,7 +97,6 @@ namespace FairlySadProductions.Scripts.ObjectPool
         {
             if (ourObject)
             {
-                Debug.LogError($"[{name}]: cannot set object {obj.name}: object {ourObject.name} is already stored in this pool.");
                 return;
             }
 

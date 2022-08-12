@@ -1,9 +1,10 @@
 ﻿using FairlySadProductions.CoreScripts.Scripts.Base;
+using FairlySadProductions.Scripts.ObjectPool;
 using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
 
-namespace FairlySadProductions.Scripts.ObjectPool
+namespace FairlySadProductions.CoreScripts.Scripts.ObjectPool
 {
     /// <summary>
     /// The base class for objects that are pooled in a SimpleObjectPool. This base class handles interoperability with

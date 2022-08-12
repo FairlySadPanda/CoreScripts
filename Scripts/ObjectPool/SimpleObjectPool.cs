@@ -3,7 +3,7 @@ using UnityEngine;
 using VRC.SDK3.Components;
 using VRC.SDKBase;
 
-namespace FairlySadProductions.Scripts.ObjectPool
+namespace FairlySadProductions.CoreScripts.Scripts.ObjectPool
 {
     /// <summary>
     /// SimpleObjectPool leverages VRChat's VRCObjectPool system to manage a pool of objects, assigning one object to

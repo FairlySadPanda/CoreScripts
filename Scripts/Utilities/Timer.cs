@@ -1,7 +1,7 @@
 ﻿using UdonSharp;
 using VRC.Udon;
 
-namespace FairlySadProductions.Scripts.Core
+namespace FairlySadProductions.CoreScripts.Scripts.Utilities
 {
     /// <summary>
     /// Timer is a behaviour that uses SendCustomEventDelayedSeconds as a pseudo-callback. To use this behaviour:

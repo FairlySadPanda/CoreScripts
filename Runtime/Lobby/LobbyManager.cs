@@ -11,7 +11,7 @@ namespace FairlySadProductions.CoreScripts.Scripts.Lobby
     /// </summary>
     public abstract class LobbyManager : NetworkedUdonSharpBehaviour
     {
-        [SerializeField, Range(1,100)] private int maxLobbySize;
+        [SerializeField, Range(1,100)] private int maxLobbySize = 10;
         [SerializeField] private GameManager manager;
         [UdonSynced] protected int[] players;
         private int numberOfSignedUpPlayers;
@@ -23,7 +23,7 @@ namespace FairlySadProductions.CoreScripts.Scripts.Lobby
             _Reset();
         }
 
-        public void AddPlayer(int playerID)
+        public virtual void AddPlayer(int playerID)
         {
             if (isLocked)
             {
@@ -55,7 +55,7 @@ namespace FairlySadProductions.CoreScripts.Scripts.Lobby
             RequestSerialization();
         }
 
-        public void RemovePlayer(int playerID)
+        public virtual void RemovePlayer(int playerID)
         {
             if (isLocked)
             {

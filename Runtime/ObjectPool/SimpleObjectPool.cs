@@ -18,6 +18,12 @@ namespace FairlySadProductions.CoreScripts.Scripts.ObjectPool
         private VRCObjectPool pool;
         private SimplePooledObject ourObject;
 
+        
+        [Tooltip("The amount of time in seconds it takes for an assigned object to be fully given to a player. " +
+                 "The default of 3 seconds should be fine for most worlds. " +
+                 "For complex worlds, increasing this timeout may be needed."), SerializeField]
+        private float waitTime = 3;
+
         public void Start()
         {
             pool = GetComponent<VRCObjectPool>();
@@ -121,6 +127,11 @@ namespace FairlySadProductions.CoreScripts.Scripts.ObjectPool
         public GameObject[] GetPooledObjects()
         {
             return pool.Pool;
+        }
+
+        public float GetWaitTime()
+        {
+            return waitTime;
         }
     }
 }

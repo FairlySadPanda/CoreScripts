@@ -1,5 +1,4 @@
 ﻿using FairlySadProductions.CoreScripts.Scripts.Base;
-using FairlySadProductions.Scripts.ObjectPool;
 using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
@@ -34,23 +33,27 @@ namespace FairlySadProductions.CoreScripts.Scripts.ObjectPool
         {
             if (!Networking.IsOwner(pool.gameObject))
             {
-                Debug.LogError($"cannot set owner of object {name}: not owner of pool");
+                Debug.LogError($"[{name}] Cannot set owner of object {name}: not owner of pool");
                 
                 return;
             }
             
             ownerID = newID;
             
-            Debug.Log($"{name} SetOwnerID: ID set to {newID}");
+            Debug.Log($"[{name}] ID set to {newID}");
+            
+            SendCustomEventDelayedSeconds(nameof(EnforceSync), pool.GetWaitTime());
         }
 
         // Explanation of this weird code:- ownerID is allocated after we've *spawned* the object but real network
-        // sync is only enabled after OnEnable is called. For some reason. It's agony.
+        // sync is only enabled some time later: we're assuming about 3 seconds. For some reason. It's agony.
         // So we have to do ownerID when we can and then wait for OnEnable to resolve. :|
         
-        public void OnEnable()
+        // TODO: When the promised network ownership and sync issues are fixed, revisit this workaround.
+        
+        public void EnforceSync()
         {
-            var owner = ownerID == 0 ? "nobody" : "VRCPlayerApi.GetPlayerById(ownerID).displayName";
+            var owner = ownerID > 0 ? $"{VRCPlayerApi.GetPlayerById(ownerID).displayName}" : "nobody";
             Debug.Log($"pooled object {name} enabled: owner is {owner}: {ownerID}");
             
             if (!Networking.IsOwner(pool.gameObject))
@@ -72,13 +75,13 @@ namespace FairlySadProductions.CoreScripts.Scripts.ObjectPool
         {
             if (Networking.LocalPlayer.playerId == ownerID)
             {
-                Debug.Log($"Claiming ownership of pooled object {name}");
+                Debug.Log($"[{name}: Claiming ownership of this pooled object: we own it");
                 
                 ClaimOwnership();
                 pool.SetPooledObject(this);
             } else if (ownerID == 0 && Networking.IsOwner(Networking.LocalPlayer, pool.gameObject))
             {
-                Debug.Log($"Claiming ownership of pooled object {name} because it's not owned by anyone and we own the pool");
+                Debug.Log($"[{name}: Claiming ownership of this object: it's not owned by anyone and we own the pool");
                 
                 ClaimOwnership();
             }

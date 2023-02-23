@@ -1,6 +1,8 @@
 # FairlySadProductions CoreScripts
 *Scripts to speed up your world development. More Udon, More Better!*
 
+# Note: we don't recommend using these scripts at the moment. This library is being edited and extended outwards as a side project.
+
 CoreScripts is a UdonSharp 1.0 library for use with VRChat worlds of all kinds - in particular, game worlds and other worlds that require complex networked interactions. This library is a dependency for other FairlySadProduction libraries and packages, and can be imported by other creators to extend.
 
 ### ⚠️Warning!⚠️
